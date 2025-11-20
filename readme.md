@@ -40,7 +40,6 @@ The program is structured around three main classes:
     * Keys `1-9` correspond to the board positions:
 
 | 1 | 2 | 3 |
-| :---: | :---: | :---: |
 | 4 | 5 | 6 |
 | 7 | 8 | 9 |
 
@@ -94,9 +93,9 @@ The Medium level uses a **one-step lookahead** strategy. It checks each possible
 If neither condition applies, it chooses a random free square.
 
 #### Hard Algorithm (Minimax)
-The Hard level uses the **minimax algorithm** to play perfectly. [attachment_0](attachment)
+The Hard level uses the **minimax algorithm** to play perfectly.
 
-The AI examines all possible future moves using recursion, assigning scores to each outcome (win=$1$, loss=$-1$, draw=$0$). The AI chooses the move that **maximizes its chance of winning**. On this level, the AI **cannot be defeated**.
+The AI examines all possible future moves using recursion, assigning scores to each outcome (win=1, loss=-1, draw=0). The AI chooses the move that **maximizes its chance of winning**. On this level, the AI **cannot be defeated**.
 
 #### Minimax Algorithm Pseudocode
 
@@ -125,3 +124,32 @@ function bestMove():
         score = minimax(next board, false)  # human plays next
         undo move
     choose any move with the best score  # usually multiple options with same outcome
+
+
+## 📄 Board Class Documentation
+
+The **`Board`** class (subclass of `list`) is responsible for managing the state of the 3x3 Tic-Tac-Toe grid.
+
+| Method | Description |
+| :--- | :--- |
+| `isOccupied(i, j)` | Returns `True` if the cell at `(i, j)` is not empty (i.e., contains 'X' or 'O'). |
+| `isFree(i, j)` | Returns `True` if the cell at `(i, j)` is empty. |
+| `freeCells()` | Returns a list of all empty cells as `(row, col)` tuples. |
+| `enter(i, j, value)` | Places a marker (`0` or `1`) at the specified cell `(i, j)`. |
+| `xWin()` | Returns `True` if **X** has a winning line. |
+| `oWin()` | Returns `True` if **O** has a winning line. |
+| `isFull()` | Returns `True` if all cells are occupied. |
+| `isTie()` | Returns `True` if the board is full with no winner. |
+| `getWinningLine()` | Returns the coordinates of the three cells forming a winning line, if one exists. |
+| `amountOccupied()` | Returns the number of occupied cells. |
+| `onlyCenter()` | Returns `True` if exactly one cell is occupied, and it is the center cell. |
+| `oneOccupied()` | Returns `True` if exactly one cell is occupied (any position). |
+| `clear()` | Resets the board to its initial empty state. |
+
+---
+
+## 📚 References
+
+* Wikipedia - Minimax: [https://en.wikipedia.org/wiki/Minimax](https://en.wikipedia.org/wiki/Minimax)
+* Overleaf - LaTeX Editor: [https://www.overleaf.com](https://www.overleaf.com)
+* ChatGPT - Help with LaTeX syntax and Tkinter documentation: [https://chat.openai.com](https://chat.openai.com)
